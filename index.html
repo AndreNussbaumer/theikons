@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href='css/styles.css'/>
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <title>The Ikons</title>
+    </head>
+    <body>
+      <!-- Pop ups -->
+
+      <div id="popUp" class="bgPopUp">
+        <div id="popUpContent" class="popUpContent">
+          <span id="close">X</span>
+          <p class="popUpText">Log in</p>
+            <hr/>
+              <form action="/login" method="POST">
+                <div class="fields">
+                  <input name="username" id="signDiv-username" type="text" placeholder="Username" id="field"></input><br/>
+                  <input name="password" id="signDiv-password" type="password" placeholder="Password" id="field"></input><br/>
+                  <button class="register" id="signDiv-signIn">Log in</button>
+                </div>
+              </form>
+        </div>
+      </div>
+
+      <div id="popUpRegister" class="bgPopUp">
+        <div id="popUpContentReg" class="popUpContent">
+          <span id="closeReg">X</span>
+          <p class="popUpText">Register</p>
+          <hr/>
+          <form action="/signup" method="POST">
+            <div class ="fields" id="signDiv">
+              <input name="username" id="signDiv-username" type="text" placeholder="Username"></input><br/>
+              <input name="password" id="signDiv-password" type="password" placeholder="Password"></input><br/>
+              <button class="register" id="signDiv-signUp">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="createIkonBg" class="bgPopUp">
+        <div id="popUpIkon" class="popUpContent">
+          <span id="closeIkon">X</span>
+          <p class="popUpText">Create Ikon</p>
+          <hr/>
+          <form action="/createikon" method="POST">
+            <div class="fields" id="fieldscenter">
+             <input name="ikonname" id="ikonname" type="text" placeholder="Ikon Name" required></input><br/>
+              <select name="type" id="type" required>
+                <option value="Rammer">Rammer</option>
+                <option value="Shrouder">Shrouder</option>
+                <option value="Discharger">Discharger</option>
+              </select>
+              <button class="register">Create Ikon</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Pop ups end -->
+
+      <div id="nav">
+        <div id="logo">
+          <a href="/">
+            <img id="logoImg" src="images/ikonslogo.png"/>
+          </a>
+        </div>
+        <div id="links">
+          <p id="links-text">
+            <a id="register" class="firstLink">REGISTER</a>
+            <a id="login" class="secondLink">LOGIN</a>
+            <a id="classes" href="#" class="thirdLink" onclick="scrollClickClasses();return false;">CLASSES</a>
+            <a href="https://andrenussbaumer.github.io/anwebsite/ikons.html" target="_blank" class="fourthLink">BOOK</a>
+          </p>
+        </div>
+      </div>
+
+
+      <div id="mobileAdvert" class="mobileAdvert">
+        <div id="popUpContent" class="mobileContent">
+          <p class="mobilePopUpText">
+            <span class="break">We're sorry.</span><span class="break">This game isn't supported on mobile.</span>
+          </p>
+          <p>
+            <span class="mobilePopUpTextsec"><i>Tap anywhere to continue...</i></span>
+          </p>
+        </div>
+      </div>
+
+      <div id="mobileHead" class="mobileHead">
+        <div id="mobileJourney" class="mobileJourney">
+          <p>
+            JOURNEY THROUGH THE <b>IKON’S</b> UNIVERSE
+            IN SEARCH OF THE
+            <span class="mobilePlanet">PLANET SOUL</span>
+          </p>
+        </div>
+      </div>
+
+      <div id="container">
+        <div class='thunder'>
+            <img/>
+          </div>
+          <div id="firstBg">
+            <img src="images/bglandingpage.png"/>
+          </div>
+              <div id="firstLayer">
+                <img src="images/lastlayer.png"/>
+              </div>
+                <div id="middleLayer">
+                  <div id="landingText">
+                    <!-- ONLY MOBILE -->
+                    <div id="mobileDest">
+                      <div id="imgDiv">
+                        <img class="imgDest" src="images/dest.png"/>
+                      </div>
+                    </div>
+                    <!-- -->
+                    <p class="textStyle">
+                      <span class="mobileBanner">JOURNEY THROUGH THE IKON’S UNIVERSE</span>
+                      <span class="mobileBanner1">IN SEARCH OF THE</span>
+                      <p class ="soulText">
+                        PLANET SOUL
+                      </p>
+                    </p>
+                  </div>
+                  <img src="images/middlelayer.png"/>
+                </div>
+          <div id="landingPage">
+            <img src="images/firstlayer.png"/>
+          </div>
+
+          <div id="playButton">
+            <a href="game.html">
+              <div class="playB">
+                <p>Play!</p>
+              </div>
+            </a>
+          </div>
+          <div id="playButton">
+            <a href="game.html">
+              <div class="playB">
+                <p>Try out!</p>
+              </div>
+            </a>
+          </div>
+        <div id="foreground">
+          <img src="images/foreground.png"/>
+        </div>
+      </div>
+
+<!-- MOBILE CONTENT -->
+
+<div id="mobileContent">
+  <div id="mobileText">
+    <p id="leadMobile">
+      <span class="lead"><b>WELCOME</b></span>
+      <span class="secondLead"><b>TO THE IKON’S UNIVERSE</b></span>
+    </p>
+    <p>
+      So, what’s an <b>Ikon?</b>
+    </p>
+    <p>
+      Ikons are fantastic robots that can store vast amounts of knowledge.
+      They can fly, activate shields, and shoot lasers, but, the most interesting feature is the light they emancipate,
+      much like the light of the sun, it influences everything, and everyone.
+    </p>
+    <div class="divider">
+      <img class="ramimg" src="images/divider.png"/>
+    </div>
+  </div>
+
+  <div id="rammerMob" class="ikonRammer">
+    <div class="rammerImg">
+      <img class="ramimg" src="images/rammer.png"/>
+    </div>
+    <div class="secText">
+      <p>
+        <b>Rammers</b> are known for their defensive abilities.
+      </p>
+    </div>
+    <div class="feats">
+      <img src="images/steelshield.png"/>
+      <img src="images/spinningdash.png"/>
+      <img src="images/whirlwind.png"/>
+    </div>
+    <div class="divider">
+      <img class="ramimg" src="images/divider.png"/>
+    </div>
+  </div>
+
+  <div id="dischargerMob" class="ikonRammer">
+    <div class="rammerImg">
+      <img class="ramimg" src="images/discharger1.png"/>
+    </div>
+    <div class="secText">
+      <p>
+        <b>Dischargers</b> are known for their lasers.
+      </p>
+    </div>
+    <div class="feats">
+      <img src="images/lof.png"/>
+      <img src="images/swift.png"/>
+      <img src="images/trifekta.png"/>
+    </div>
+    <div class="divider">
+      <img class="ramimg" src="images/divider.png"/>
+    </div>
+  </div>
+
+  <div id="shrouderMob" class="ikonRammer">
+    <div class="rammerImg">
+      <img class="ramimg" src="/images/shrouder.png"/>
+    </div>
+    <div class="secText">
+      <p>
+        <b>Shrouders</b> are known for their Auras.
+      </p>
+    </div>
+    <div class="feats">
+      <img src="images/evade.png"/>
+      <img src="images/unifaura.png"/>
+      <img src="images/invigoratingaura.png"/>
+    </div>
+    <div class="divider">
+      <img class="ramimg" src="images/divider.png"/>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="logos">
+      <img class="twitter" src="images/twitter.png"/>
+      <img class="instagram" src="images/instagram.png"/>
+      <img class="youtube" src="images/youtube.png"/>
+    </div>
+    <p class="footerText">
+      <i>Built by: </i><b>André Nussbaumer</b>
+    </p>
+  </div>
+
+</div>
+
+<!-- DESKTOP CONTENT -->
+
+<div class="content">
+    <div id="wrapper">
+      <div class="block">
+        <p class="Lead">
+          <b>WELCOME</b> TO THE IKON’S UNIVERSE.
+        </p>
+        <p class="Secondary">
+          So, what’s an <b>Ikon?</b>
+        </p>
+        <p>
+          Ikons are fantastic robots that can store vast amounts of knowledge.
+          They can fly, activate shields, and shoot lasers, but, the most interesting feature is the light they emancipate,
+          much like the light of the sun, it influences everything, and everyone.
+        </p>
+        <p>
+          It is said that the color of their light fuses with the color of the aura with whom they bind with.
+        </p>
+      </div>
+      <div class="block ikon">
+        <img src="images/dest.png"/>
+      </div>
+    </div>
+    <div class="divider">
+      <img src="images/divider.png"/>
+    </div>
+    <div class="secondContent">
+      <div class="typesOfIkons">
+        <p class="Lead">
+          TYPES OF <b>IKONS</b>
+        </p>
+      </div>
+      <div class="menu">
+        <p class="ikonsSelect">
+            <input type="radio" id="RAM" name="ikonSelect" value="RAM" checked="true"/>
+          <label for="RAM" class="rammersLink">RAMMERS</label>
+            <input type="radio" id="SHR" name="ikonSelect" value="SHR"/>
+          <label for="SHR" class="shroudersLink">SHROUDER</label>
+            <input type="radio" id="DIS" name="ikonSelect" value="DIS"/>
+          <label for="DIS" class="dischargersLink">DISCHARGER</label>
+        </p>
+      </div>
+
+      <!-- DIFFERENT IKONS SECTION -->
+
+        <div id="rammer" class="ikonRammer">
+          <div class="rammerImg">
+            <img src="images/rammer.png"/>
+          </div>
+          <div class="secText">
+            <p>
+              <b>Rammers</b> are known for their defensive abilities. From Auras that grant more natural armor, to evasive feats, these Ikons prefer to deal
+              damage by using their overwhelming constitution. Built with harder materials than the latter, these Ikons will ram into their opponents
+              leaving them in disarray.
+            </p>
+          </div>
+          <div class="feats">
+            <img src="images/steelshield.png"/>
+            <img src="images/spinningdash.png"/>
+            <img src="images/whirlwind.png"/>
+          </div>
+          <p class="StatsText">
+            Acceleration Armor Constitution Energy
+          </p>
+          <div class="status">
+              <div class="stats">
+                <div class="skill acceleration"></div>
+              </div>
+              <div class="stats armorstats">
+                <div class="skill armor"></div>
+              </div>
+              <div class="stats constitutionstats">
+                <div class="skill constitution"></div>
+              </div>
+              <div class="stats energystats">
+                <div class="skill energy"></div>
+              </div>
+          </div>
+        </div>
+
+      <div id="discharger" class="ikonDischarger">
+        <div class="rammerImg">
+          <img src="images/discharger1.png"/>
+        </div>
+        <div class="secText">
+          <p>
+            <b>Dischargers</b> are known for their lasers. These Ikons prefer ranged battle and are quite
+            unpredictable, as they can use their energy effectively with their power.
+            Mix between hard and light materials.
+          </p>
+        </div>
+        <div class="feats">
+          <img src="images/lof.png"/>
+          <img src="images/swift.png"/>
+          <img src="images/trifekta.png"/>
+        </div>
+        <p class="StatsText">
+          Acceleration Armor Constitution Energy
+        </p>
+        <div class="status">
+            <div class="stats">
+              <div class="skill Dacceleration"></div>
+            </div>
+            <div class="stats armorstats">
+              <div class="skill Darmor"></div>
+            </div>
+            <div class="stats constitutionstats">
+              <div class="skill Dconstitution"></div>
+            </div>
+            <div class="stats energystats">
+              <div class="skill Denergy"></div>
+            </div>
+        </div>
+      </div>
+
+      <div id="shrouder" class="ikonShrouder">
+        <div class="rammerImg">
+          <img src="images/shrouder.png"/>
+        </div>
+        <div class="secText">
+          <p>
+            <b>Shrouders</b> are known for their Auras. These Ikons prefer to boost their power through energy.
+            Usually built with light materials, they rely on their magical abilities to counter enemy Ikons.
+          </p>
+        </div>
+        <div class="feats">
+          <img src="images/evade.png"/>
+          <img src="images/unifaura.png"/>
+          <img src="images/invigoratingaura.png"/>
+        </div>
+        <p class="StatsText">
+          Acceleration Armor Constitution Energy
+        </p>
+        <div class="status">
+            <div class="stats">
+              <div class="skill Sacceleration"></div>
+            </div>
+            <div class="stats armorstats">
+              <div class="skill Sarmor"></div>
+            </div>
+            <div class="stats constitutionstats">
+              <div class="skill Sconstitution"></div>
+            </div>
+            <div class="stats energystats">
+              <div class="skill Senergy"></div>
+            </div>
+        </div>
+      </div>
+      <div class="divider">
+        <img src="images/divider.png"/>
+      </div>
+      <div class="logos">
+        <img class="twitter" src="images/twitter.png"/>
+        <img class="instagram" src="images/instagram.png"/>
+        <img class="youtube" src="images/youtube.png"/>
+      </div>
+      <div class="divider">
+        <img src="images/divider.png"/>
+      </div>
+      <p class="footer">
+        <i>Built by: </i><b>André Nussbaumer</b>
+      </p>
+    </div>
+  </div>
+
+  <!-- Javascript -->
+
+  <script>
+  const bg = document.getElementById('firstBg')
+  const firstLayer = document.getElementById('firstLayer')
+  const middleLayer = document.getElementById('middleLayer')
+  const lastLayer = document.getElementById('landingPage')
+  const text = document.getElementById('landingText')
+  const foreGround = document.getElementById('foreground')
+
+  const rammer = document.getElementById('rammer')
+  const shrouder = document.getElementById('shrouder')
+  const discharger = document.getElementById('discharger')
+
+  const ram = document.getElementById('RAM')
+  const shr = document.getElementById('SHR')
+  const dis = document.getElementById('DIS')
+
+  const popUp = document.getElementById('popUp')
+  const popUpReg = document.getElementById('popUpRegister')
+  const popUpIkbg = document.getElementById('createIkonBg')
+
+  const buttonSignIn = document.getElementById('login')
+  const buttonRegister = document.getElementById('register')
+  const buttonCreate = document.getElementById('ikonCreation')
+
+  const close = document.getElementById('close')
+  const closeReg = document.getElementById('closeReg')
+  const closeIk = document.getElementById('closeIkon')
+
+  const popUpContent = document.getElementById('popUpContent')
+  const popUpContentReg = document.getElementById('popUpContentReg')
+  const popUpIk = document.getElementById('popUpIkon')
+
+  const mobileSlide = document.getElementById('mobileText')
+  const mobileAdv = document.getElementById('mobileAdvert')
+  const mobileHead = document.getElementById('mobileHead')
+
+  const rammerMob = document.getElementById('rammerMob')
+  const dischargerMob = document.getElementById('dischargerMob')
+  const shrouderMob = document.getElementById('shrouderMob')
+
+  let ikonChosen = null
+
+  let mobile
+
+  if(screen.width <= 430){
+    mobile = true
+  } else {
+    mobile = false
+  }
+
+  if(buttonSignIn){
+    buttonSignIn.onclick = function() {
+      popUp.style.visibility = 'visible'
+    }
+  }
+
+  if(buttonRegister){
+    buttonRegister.onclick = function() {
+      popUpReg.style.visibility = 'visible'
+    }
+  }
+
+  if(buttonCreate){
+    buttonCreate.onclick = function() {
+      popUpIkbg.style.visibility = 'visible'
+    }
+  }
+
+  close.onclick = function() {
+    popUp.style.visibility = 'hidden';
+  }
+
+
+  closeReg.onclick = function() {
+    popUpReg.style.visibility = 'hidden'
+
+  }
+
+  closeIk.onclick = function() {
+    popUpIkbg.style.visibility = 'hidden'
+
+  }
+
+  window.onclick = function(e) {
+
+    if(mobile){
+      mobileAdvert.style.visibility = 'hidden'
+    }
+
+    if(e.target == popUpReg) {
+      popUpReg.style.visibility = "hidden"
+    }
+
+    if(e.target == popUp) {
+      popUp.style.visibility = "hidden"
+    }
+
+    if(e.target == popUpIkbg) {
+      popUpIkbg.style.visibility = "hidden"
+    }
+  }
+
+
+
+  window.addEventListener('click', function(e) {
+
+    if(ram){
+      if(ram.checked){
+
+        rammer.style.display = 'flex'
+        shrouder.style.display = 'none'
+        discharger.style.display = 'none'
+        ikonChosen = 'rammer'
+
+      } else {
+        rammer.style.display = "none"
+      }
+    }
+
+    if(shr){
+      if(shr.checked){
+        shrouder.style.display = 'flex'
+        rammer.style.display = 'none'
+        discharger.style.display = 'none'
+        ikonChosen = 'shrouder'
+      } else {
+        shrouder.style.display = 'none'
+      }
+    }
+
+    if(dis){
+      if(dis.checked){
+        discharger.style.display = 'flex'
+        rammer.style.display = 'none'
+        shrouder.style.display = 'none'
+        ikonChosen = 'discharger'
+      } else {
+        discharger.style.display = 'none'
+      }
+    }
+
+  })
+
+
+  window.addEventListener('scroll', function(e) {
+
+    let value = window.scrollY
+
+    firstLayer.style.top = value * 0.5 + 'px'
+    middleLayer.style.top = 330 + value * 0.25 + 'px'
+    lastLayer.style.top = 400 + value * 0.05 + 'px'
+    text.style.top = value * 0.30 + 'px'
+    mobileHead.style.opacity = 1 - value / 200
+
+    mobileSlide.style.left = 500 - value + 'px'
+
+
+    if(mobile){
+      dischargerMob.style.left = 1000 - value + 'px'
+      rammerMob.style.right = 500 - value + 'px'
+      shrouderMob.style.right = 1400 - value + 'px'
+      if(value > 505){
+        rammerMob.style.right = 0 + 'px'
+      }
+      if(value > 1020){
+        dischargerMob.style.left = 0 + 'px'
+      }
+      if(value > 1350){
+        shrouderMob.style.right = 0 + 'px'
+      }
+    }
+
+
+    if(middleLayer.style.top >= 483 + 'px'){
+      middleLayer.style.top = 410
+    }
+
+    if(value > 460){
+      mobileSlide.style.left = 40 + 'px'
+    }
+
+
+
+    if(!mobile){
+
+      if(value > 10){
+
+        nav.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'
+        nav.style.height = '90px'
+        logoImg.style.width = '80%'
+        logo.style.top = '10px'
+        links.style.top = '15px'
+        links.style.fontSize = '8pts'
+
+      } else {
+        nav.style.backgroundColor = 'rgba(0, 0, 0, 0.0)'
+        nav.style.height = '80px'
+        logoImg.style.width = '100%'
+        logo.style.top = '60px'
+        links.style.top = '75px'
+        links.style.fontWeight = 'bold'
+        links.style.fontSize = '16pts'
+      }
+    } else {
+
+      if(value > 10){
+        nav.style.backgroundColor = 'rgba(0, 0, 0, 0.6)'
+        nav.style.height = '90px'
+        logoImg.style.width = '80%'
+        logo.style.top = '-200px'
+        links.style.top = '30px'
+        links.style.fontSize = '8pts'
+
+      } else {
+
+        nav.style.backgroundColor = 'rgba(0, 0, 0, 0.0)'
+        nav.style.height = '80px'
+        logoImg.style.width = '100%'
+        logo.style.top = '60px'
+        links.style.top = '200px'
+        links.style.fontWeight = 'bold'
+        links.style.fontSize = '16pts'
+      }
+
+      if(middleLayer.style.top > 400 + 'px') {
+        middleLayer.style.top = 400 + 'px'
+      }
+
+      if(firstLayer.style.top > 310 + 'px') {
+        firstLayer.style.top = 310 + 'px'
+      }
+    }
+
+
+    if(value > 407){
+      playButton.style.opacity = 0.6
+    } else {
+    }
+
+    if(value > 407){
+      playButton.style.opacity = 0.6
+    } else {
+    }
+
+    if(value >= 510){
+      if(!mobile){
+        firstLayer.style.top = 0
+      }
+      playButton.style.opacity = 0
+    } else {
+      firstLayer.style.top = value * 0.5 + 'px'
+    }
+
+    if(value < 404){
+      playButton.style.opacity = 1
+    }
+
+  })
+
+  function scrollClickClasses() {
+    document.querySelector('.typesOfIkons').scrollIntoView({
+    behavior: 'smooth'
+    })
+  }
+
+  </script>
+
+</body>
+</html>
