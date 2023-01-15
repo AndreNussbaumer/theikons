@@ -140,13 +140,7 @@
               </div>
             </a>
           </div>
-          <div id="playButton">
-            <a href="game.html">
-              <div class="playB">
-                <p>Try out!</p>
-              </div>
-            </a>
-          </div>
+
         <div id="foreground">
           <img src="images/foreground.png"/>
         </div>
@@ -431,6 +425,8 @@
   const popUpReg = document.getElementById('popUpRegister')
   const popUpIkbg = document.getElementById('createIkonBg')
 
+  const playButton = document.getElementById('playButton')
+
   const buttonSignIn = document.getElementById('login')
   const buttonRegister = document.getElementById('register')
   const buttonCreate = document.getElementById('ikonCreation')
@@ -644,11 +640,6 @@
       }
     }
 
-
-    if(value > 407){
-      playButton.style.opacity = 0.6
-    } else {
-    }
 
     if(value > 407){
       playButton.style.opacity = 0.6
