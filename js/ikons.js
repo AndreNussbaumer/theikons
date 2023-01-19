@@ -933,13 +933,14 @@ class Rammer extends Ikon {
 
 class Shrouder extends Ikon {
 
-  constructor(x, y){
+  constructor(x, y, xpe){
     super()
     this.pos = new Vector(x,y)
     this.naturalAc = 4
     this.acceleration = 1
     this.power = 1
     this.type = 'Shrouder'
+    this.xp = xpe
     this.featsAvailable = [
       {
         name: 'Unifiying Aura',

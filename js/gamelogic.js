@@ -168,7 +168,7 @@ function laserUpdate() {
 
 // Ikons
 
-let Ikon1 = new Shrouder(700, 900)
+let Ikon1 = new Shrouder(700, 900, 0)
 
 
 /*
