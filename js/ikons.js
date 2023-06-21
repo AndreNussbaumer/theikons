@@ -772,163 +772,87 @@ class Rammer extends Ikon {
       {
         name: 'Spinning Dash',
         img: spinningdash,
-        activate: function() {
-          console.log('works')
+        activate: () => {
+          evade()
         }
       },
       {
         name: 'Steel Shield',
         img: steelArmor,
-        activate: function() {
-          console.log('different')
+        activate: () => {
+          Armorofsteel()
         }
       },
       {
         name: 'Whirlwind',
         img: whirlwind,
-        activate: function() {
-          console.log('another one')
+        activate: () => {
+          whirlWind()
         }
       }
     ]
     this.featsTaken = [{
     }]
   }
+}
 
+// RAMMER SKILLS
 
-  spinningDash() {
+function Armorofsteel() {
 
-    if(RIGHT && !UP && !DOWN){
-      if(rightClick && cooldownDash == false){
-          this.vel.x = this.vel.x + 15
-          this.acc.x = this.acc.x + 15
-          cooldownDash = true
-      }
-    }
-
-    if(LEFT && !UP && !DOWN){
-      if(rightClick && cooldownDash == false) {
-          this.vel.x = this.vel.x - 15
-          this.acc.x = this.acc.x - 15
-          cooldownDash = true
-      }
-    }
-
-    if(DOWN && !RIGHT && !LEFT){
-      if(rightClick && cooldownDash == false) {
-        this.vel.y = this.vel.y + 15
-        this.acc.y = this.acc.y + 15
-        cooldownDash = true
-      }
-    }
-
-    if(UP && !RIGHT && !LEFT){
-      if(rightClick && cooldownDash == false) {
-        this.vel.y = this.vel.y - 15
-        this.acc.y = this.acc.y - 15
-        cooldownDash = true
-      }
-    }
-
-    // Diagonal dodge
-
-    if(RIGHT && UP){
-      if(rightClick && cooldownDash == false) {
-        this.vel.y = this.vel.y - 15
-        this.acc.y = this.acc.y - 15
-        this.vel.x = this.vel.x + 15
-        this.acc.x = this.acc.x + 15
-        cooldownDash = true
-      }
-    }
-
-    if(RIGHT && DOWN){
-      if(rightClick && cooldownDash == false) {
-        this.vel.y = this.vel.y + 15
-        this.acc.y = this.acc.y + 15
-        this.vel.x = this.vel.x + 15
-        this.acc.x = this.acc.x + 15
-        cooldownDash = true
-      }
-    }
-
-    if(LEFT && UP){
-      if(rightClick && cooldownDash == false) {
-        this.vel.y = this.vel.y - 15
-        this.acc.y = this.acc.y - 15
-        this.vel.x = this.vel.x - 15
-        this.acc.x = this.acc.x - 15
-        cooldownDash = true
-      }
-    }
-
-    if(LEFT && DOWN){
-      if(rightClick && cooldownDash == false) {
-        this.vel.y = this.vel.y + 15
-        this.acc.y = this.acc.y + 15
-        this.vel.x = this.vel.x - 15
-        this.acc.x = this.acc.x - 15
-        cooldownDash = true
-      }
-    }
-
-    if(cooldownDash == true){
-      cooldownDashTimer--
-      if(cooldownDashTimer <= 0){
-        cooldownDash = false
-        cooldownDashTimer = 100
-      }
-    }
+  if(cooldownSa == false) {
+      Ikon1.naturalAc += 1
+      cooldownSa = true
   }
 
-  steelArmor() {
+}
 
-    if(cooldownSa == false) {
-        this.naturalAc += 1
-        cooldownSa = true
+function steelCoolDown() {
+  if(cooldownSa == true){
+    for(let i = 0; i < 2; i++){
+      particles.push(new EnergyLines(500, 550))
     }
-
-    if(cooldownSa == true){
-      for(let i = 0; i < 2; i++){
-        particles.push(new EnergyLines(500, 550))
-      }
-      cooldownSaTimer--
-      if(cooldownSaTimer <= 0){
-        this.naturalAc -= 1
-        cooldownSa = false
-        cooldownSaTimer = 1000
-      }
+    cooldownSaTimer--
+    if(cooldownSaTimer <= 0){
+      Ikon1.naturalAc -= 1
+      cooldownSa = false
+      cooldownSaTimer = 1000
     }
   }
+}
 
-  whirlWind() {
+
+function whirlWind() {
+  console.log(cooldownWhirlwind)
 
     if(cooldownWhirlwind == false) {
-      this.physicalPower += 1
+      Ikon1.physicalPower += 1
       cooldownWhirlwind = true
       cooldownWhirlwindEffect = true
     }
+}
 
-    if(cooldownWhirlwindEffect){
-      for(let i = 0; i < 3; i++){
-        particles.push(new Whirlwind(this.pos.x, this.pos.y))
-      }
-      whirlWindEffect--
-      if(whirlWindEffect <= 0){
-        this.physicalPower -= 1
-        whirlWindEffect = 50
-        cooldownWhirlwindEffect = false
-      }
+function whirlWindCoolDown() {
+
+  if(cooldownWhirlwindEffect){
+    for(let i = 0; i < 3; i++){
+      particles.push(new Whirlwind(Ikon1.pos.x, Ikon1.pos.y))
     }
-
-    if(cooldownWhirlwind){
-      cooldownWhirlwindTimer--
-      if(cooldownWhirlwindTimer <= 0){
-        cooldownWhirlwind = false
-        cooldownWhirlwindTimer = 500
-      }
+    whirlWindEffect--
+    if(whirlWindEffect <= 0){
+      Ikon1.physicalPower -= 1
+      whirlWindEffect = 50
+      cooldownWhirlwindEffect = false
     }
   }
+
+  if(cooldownWhirlwind){
+    cooldownWhirlwindTimer--
+    if(cooldownWhirlwindTimer <= 0){
+      cooldownWhirlwind = false
+      cooldownWhirlwindTimer = 500
+  }
+ }
 }
 
 class Shrouder extends Ikon {
@@ -1069,12 +993,13 @@ function coolDash() {
 
 function uniAura() {
 
-    if(cooldownUniAura == false) {
-        Ikon1.naturalPower += 1
-        Ikon1.physicalPower += 1
-        cooldownUniAura = true
-    }
+  if(cooldownUniAura == false) {
+      Ikon1.naturalPower += 1
+      Ikon1.physicalPower += 1
+      cooldownUniAura = true
   }
+
+}
 
 function cooldownUAura() {
   if(cooldownUniAura){
@@ -1104,7 +1029,6 @@ function auraOfEntanglement() {
       for(let i in enemies){
         enemy = enemies[i]
         if(getDistance(Ikon1, enemy) < 120){
-            console.log(enemy)
             enemy.entangled = true
           }
       }
@@ -1112,7 +1036,6 @@ function auraOfEntanglement() {
       for(let i = 0; i < 5; i++){
         particles.push(new AuraEntanglement(Ikon1.pos.x, Ikon1.pos.y))
       }
-
       cooldownEntanglement = true
   }
 }

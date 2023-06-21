@@ -33,6 +33,7 @@ class Enemy {
     this.corroded = false
     this.entanglement = false
     this.entTimer = 100
+    this.img = dentedUpPlay
     enemies.push(this)
 
   }
@@ -104,6 +105,9 @@ class Dummy extends Enemy {
     this.power = 2
     this.shieldTime = 100
     this.hp = 10
+    this.img = dentedUpPlay
+    this.name = 'Dummy'
+    this.hit = false
   }
 
   updatePosition() {
@@ -123,8 +127,11 @@ class Dummy extends Enemy {
 
    drawEnemy() {
      ctx.save()
-     ctx.drawImage(sprites.junkArmorTop, this.pos.x - sprites.junkArmorTop.width / 2, this.pos.y - sprites.junkArmorTop.height / 2)
+     ctx.drawImage(dentedUpPlay, this.pos.x - dentedUpPlay.width / 2, this.pos.y - dentedUpPlay.height / 2)
      healthBar(this.pos.x - 50,this.pos.y -40,100,10,this.hp, 100)
+     ctx.fillStyle = "red"
+     ctx.font = "bold"
+     ctx.fillText(this.name, this.pos.x - 30, this.pos.y - 50)
      ctx.restore()
    }
 
@@ -145,6 +152,8 @@ class Wrecker extends Enemy {
     this.power = 1
     this.shieldTime = 100
     this.hp = 100
+    this.img = dentedUpPlay
+    this.name = 'Dummy'
   }
 
   updatePosition() {
@@ -163,7 +172,6 @@ class Wrecker extends Enemy {
    ctx.fillRect(this.pos.x - 50, this.pos.y - 55, this.shieldTime, 10)
    ctx.fillText(this.acceleration, this.pos.x - 50, this.pos.y - 75)
    ctx.restore()
-
   }
 
   destroyed() {
@@ -195,6 +203,9 @@ class Soulless extends Enemy {
     this.angle = 0
     this.timer = 0
     this.criticalHit = 5
+    this.img = shrouderSkin
+    this.name = 'Soulless'
+    this.hit = false
 
   }
 
@@ -240,8 +251,10 @@ class Soulless extends Enemy {
   drawEnemy() {
     ctx.save()
     ctx.drawImage(shrouderSkin, this.pos.x - shrouderSkin.width/2, this.pos.y - shrouderSkin.height/2)
+    healthBar(this.pos.x - 50,this.pos.y -40,100,10,this.hp, 100)
     ctx.fillStyle = 'red';
-    ctx.fillRect(this.pos.x - 45, this.pos.y - 30, this.hp, 5)
+    ctx.font = "bold"
+    ctx.fillText(this.name, this.pos.x - 30, this.pos.y - 50)
     ctx.restore()
   }
 
@@ -257,6 +270,36 @@ class Soulless extends Enemy {
       this.toRemove = true
     }
   }
+}
+
+function makeCircle(x, y, radius, color, alpha) {
+  ctx.save()
+  ctx.beginPath();
+  ctx.globalAlpha = alpha
+  ctx.arc(x, y, radius, 0, 2 * Math.PI);
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = color;
+  ctx.stroke();
+  ctx.restore()
+}
+
+function makeCircleFill(x, y, radius, color, alpha) {
+  ctx.save()
+  ctx.beginPath();
+  ctx.globalAlpha = alpha
+  ctx.arc(x, y, radius, 0, 2 * Math.PI);
+  ctx.lineWidth = 2;
+  ctx.fillStyle = color;
+  ctx.fill();
+  ctx.restore()
+}
+
+function highlightEnemies() {
+  enemies.forEach((enemy, index) => {
+    if(isInsideCameraEnemy(enemy)){
+      makeCircle(enemy.pos.x, enemy.pos.y, enemy.img.width, 'red', 0.5)
+    }
+  })
 }
 
 function updateEnemies() {

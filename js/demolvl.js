@@ -142,12 +142,13 @@ function thirdTip() {
   ctx.fillStyle = 'white'
   ctx.fillText("You now know how to use the Inventory!", canvas.width/2 - 320, 400)
   ctx.fillText("All the basics are covered and you are ready to embark on this wonderful journey!", canvas.width/2 - 320, 420)
-  ctx.fillText("Register an account and create your own Ikon!", canvas.width/2 - 320, 440)
-  ctx.fillText("Start collecting unique items, a multiplayer mode will be coming soon!", canvas.width/2 - 320, 460)
+
+
   drawX(1275, 385)
 
   if(clickY > 375 && clickY < 375 + 20 && clickX > 1265 && clickX < 1265 + 20) {
     thirdTipVisibility = true
+    missionCompleted()
   } else {
   }
 
@@ -159,6 +160,8 @@ function thirdTip() {
   ctx.drawImage(sprites.dest, 1260, 500, 241, 100)
 
 }
+
+let Enemy6 = new Soulless(1600,1300)
 
 function missionCompleted() {
 

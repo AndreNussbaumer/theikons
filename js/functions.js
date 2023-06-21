@@ -43,6 +43,12 @@ function isInsideCamera(rect) {
   return pos.x + MainCamera.pos.x > rect.x && pos.x + MainCamera.pos.x < rect.x + rect.img.width && pos.y + MainCamera.pos.y < rect.y + rect.img.height && pos.y + MainCamera.pos.y > rect.y
 }
 
+function isInsideCameraEnemy(rect) {
+  let pos = { x: mouseX, y: mouseY }
+  return pos.x + MainCamera.pos.x > rect.pos.x - 15 && pos.x + MainCamera.pos.x < rect.pos.x + rect.img.width / 2 && pos.y + MainCamera.pos.y < rect.pos.y + rect.img.height / 2 && pos.y + MainCamera.pos.y > rect.pos.y - 15
+}
+
+
 function isInsideItem(rect) {
   let pos = { x: mouseX, y: mouseY }
   return pos.x > rect.pos.x && pos.x < rect.pos.x + rect.image.width && pos.y < rect.pos.y + rect.image.height && pos.y > rect.pos.y

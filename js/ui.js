@@ -213,7 +213,7 @@ class Skill {
 
   cooldownOverlay() {
 
-    // RAMMER
+    // DISCHARGER
 
     if(cooldownLOFtimer <= 99 && this.img == loz){
       ctx.fillStyle = 'rgba(0, 0, 0, 0.8)'
@@ -246,6 +246,24 @@ class Skill {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.8)'
       ctx.fillRect(this.x, this.y, cooldownUniTimer/20, 50)
     }
+
+    // RAMMER
+
+    if(cooldownDashTimer <= 99 && this.img == spinningdash){
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.8)'
+      ctx.fillRect(this.x, this.y, cooldownDashTimer/2, 50)
+    }
+
+    if(cooldownWhirlwindTimer <= 499 && this.img == whirlwind){
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.8)'
+      ctx.fillRect(this.x, this.y, cooldownWhirlwindTimer/9, 50)
+    }
+
+    if(cooldownSaTimer <= 999 && this.img == steelArmor){
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.8)'
+      ctx.fillRect(this.x, this.y, cooldownSaTimer/20, 50)
+    }
+
 
   }
 

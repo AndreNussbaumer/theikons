@@ -49,6 +49,7 @@ class Lasers {
     this.timer = 0
     this.toRemove = false
     this.radius = 3
+
   }
 
   firing() {
@@ -72,7 +73,10 @@ class Lasers {
 
       if(getDistance(this, Ikon1) < 30 && this.parent !== Ikon1.id && !Ikon1.shield) {
 
+        enemy.hit = true
         this.toRemove = true
+
+        makeCircleFill(Ikon1.pos.x, Ikon1.pos.y, Ikon1.img.width / 2, 'red', 0.5)
 
         if(randomInt(100) < enemy.criticalHit){
           Ikon1.hp -= enemy.power * 3
@@ -120,8 +124,9 @@ class Falcon extends Lasers {
 
       if(getDistance(this, enemy) < 30 && this.parent !== enemy.id){
 
-        this.toRemove = true
         enemy.hit = true
+        this.toRemove = true
+        makeCircleFill(enemy.pos.x, enemy.pos.y, enemy.img.width / 2, 'red', 0.5)
 
         if(randomInt(100) < Ikon1.criticalHit){
           enemy.hp -= Ikon1.power * 3
@@ -168,7 +173,7 @@ function laserUpdate() {
 
 // Ikons
 
-let Ikon1 = new Shrouder(700, 900, 0)
+let Ikon1 = new Rammer(700, 900, 0)
 
 
 /*
@@ -230,7 +235,11 @@ let MagicLaser = new Laser(1155, 1055, 30, 30, 'Laser', true, null, 4, true, 20)
 let MagicLaser1 = new Laser(1255, 1255, 30, 30, 'Laser', true, null, 4, true, 6)
 
 let Money = new Gold(700,700, 30)
+
 */
+
+// feat that an ikon can drop mines
+
 
 let Arena = new ObstacleCircle(1260, 1250, 900)
 
@@ -241,11 +250,11 @@ function gameLogic() {
   cameraMoves()
   Arena.drawCircle()
   goldUpdate()
-  laserUpdate()
   handleParticles()
   hero()
   itemUpdate()
   updateEnemies()
+  laserUpdate()
   dmgDisplay()
   activateSkill()
   activateItem()
@@ -257,6 +266,9 @@ function gameLogic() {
   cooldownEnt()
   cooldownFixAura()
   drawDescriptionGround()
+  steelCoolDown()
+  whirlWindCoolDown()
+  highlightEnemies()
   ctx.restore()
   ctx.drawImage(sprites.vignette, 0, 0)
 }
