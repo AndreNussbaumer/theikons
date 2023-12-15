@@ -1,104 +1,8 @@
-
-let LEFT, UP, RIGHT, DOWN, SPACE, EVADELEFT, EVADERIGHT, LEFTCLICK, RIGHTCLICK, SLOTONE, SLOTTWO, SLOTTHREE, SLOTFOUR, SLOTFIVE, SLOTSIX, SLOTSEVEN, SLOTEIGHT
-
-let clickedStats
-let clickedInventory
-let leftClick
-let rightClick
-let inv
-let char
-let leftDown
-
-// MOUSE
-
-let angle = 0
-
-let mouseX = 0
-let mouseY = 0
-
-let clickX
-let clickY
-
-canvas.addEventListener('mousemove', (event) => {
-
-    mouseX = event.clientX - canvas.offsetLeft
-    mouseY = event.clientY - canvas.offsetTop
-
-    angle = new Vector(mouseX, mouseY)
-
-
-    skills.forEach((skill) => {
-      if(skill.dragged) {
-        skill.x = mouseX - 25
-        skill.y = mouseY - 25
-      }
-    })
-
-    items.forEach((item) => {
-      if(item.dragged) {
-        item.x = mouseX - item.img.width/2
-        item.y = mouseY - item.img.height/2
-      }
-    })
-})
-
-
-
-canvas.addEventListener('click', (e) => {
-
-  clickX = e.clientX - canvas.offsetLeft
-  clickY = e.clientY - canvas.offsetTop
-
-  clickXx = e.clientX - canvas.offsetLeft
-  clickYy = e.clientY - canvas.offsetTop
-
-  if(clickInside(iconStats)){
-    displayInv()
-  }
-
-  if(clickInside(iconInv)){
-    if(!CharacterMenu.display){
-      CharacterMenu.display = true
-    } else {
-      CharacterMenu.display = false
-    }
-  }
-
-
-  if(Ikon1.points){
-    for(let i = 0; i < 5; i++) {
-      let j = i * 75
-        // Leveling up
-      if(clickX > 1050 && clickX < 1070 && clickY > 305 + j && clickY < 320 + j) {
-        if(i == 0){
-          Ikon1.naturalAc += 0.10
-          Ikon1.points -= 1
-        } else if(i == 1){
-          Ikon1.natPhysicalPower += 0.10
-          Ikon1.points -= 1
-        } else if(i == 2){
-          Ikon1.acceleration += 0.01
-          Ikon1.points -= 1
-        } else if(i == 3){
-          Ikon1.naturalPower += 0.01
-          Ikon1.points -= 1
-        } else if(i == 4){
-          Ikon1.natAttSpeed += 0.10
-          Ikon1.points -= 1
-        }
-      }
-    }
-  }
-})
+let LEFT, UP, RIGHT, DOWN, SPACE
 
 // KEYBOARD
 
 canvas.addEventListener('keydown', (e) => {
-
-
-    if(e.keyCode === 32){
-        SPACE = true
-    }
 
     if(e.keyCode === 65){
         LEFT = true
@@ -120,29 +24,10 @@ canvas.addEventListener('keydown', (e) => {
         SPACE = true
     }
 
-    if(e.keyCode === 81){
-        EVADELEFT = true
-    }
-
-    if(e.keyCode === 69){
-        EVADERIGHT = true
-    }
-
-    if(e.keyCode === 49){
-        SLOTONE = true
-    }
-
-    if(e.keyCode === 50){
-        SLOTTWO = true
-    }
-
 })
 
 canvas.addEventListener('keyup', (e) => {
 
-    if(e.keyCode === 32){
-        SPACE = false
-    }
 
     if(e.keyCode === 65){
         LEFT = false
@@ -156,90 +41,112 @@ canvas.addEventListener('keyup', (e) => {
     if(e.keyCode === 83){
         DOWN = false
     }
+
     if(e.keyCode === 32){
         SPACE = false
-
-    }
-    if(e.keyCode === 81){
-        EVADELEFT = false
-
-    }
-    if(e.keyCode === 69){
-        EVADERIGHT = false
-    }
-
-    if(e.keyCode === 49){
-        SLOTONE = false
-    }
-
-    if(e.keyCode === 50){
-        SLOTTWO = false
-    }
-
-    if(e.keyCode === 73){
-        inv = false
-    }
-
-    if(e.keyCode === 67){
-        char = false
-    }
-
-
-    if(e.keyCode === 80){
-      if(!pause){
-        pause = true
-      } else {
-        pause = false
       }
-    }
 
 })
 
-canvas.addEventListener('mousedown', function(e) {
 
-  if(e.buttons === 1 ) {
-    leftClick = true
-    Ikon1.shooting = true
+
+// MOBILE JOYSTICK
+
+class Joystick {
+
+  constructor(x,y,r){
+    this.x = x
+    this.y = y
+    this.r = r
+
+    this.X = x
+    this.Y = y
+    this.R = r * 2.5
+
+    this.dx = 0
+    this.dt = 0
   }
 
-  if(e.button === 2 ) {
-    rightClick = true
+  draw() {
+    ctx.save()
+    ctx.beginPath()
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2)
+    ctx.fillStyle = "red"
+    ctx.fill()
+    ctx.restore()
+
+    ctx.save()
+    ctx.beginPath()
+    ctx.arc(this.X, this.Y, this.R, 0, Math.PI * 2)
+    ctx.strokeStyle = "red"
+    ctx.stroke()
+    ctx.restore()
   }
 
-  for(let i in skills){
-    if(isInside(skills[i])) {
-      skills[i].dragged = true
-    }
-  }
+}
 
-  for(let i in items){
-    if(InvUi.display) {
-      if(isInside(items[i]) && !items[i].ground) {
-        items[i].dragged = true
-      }
-    }
+let positionJoystick = window.innerWidth / 9.5
+let positionJoyLeft = window.innerHeight / 1.1
+
+let ratio = window.innerHeight / window.innerWidth
+
+let joystick = new Joystick(positionJoystick, positionJoyLeft, 20)
+
+function boundingCircle() {
+
+  joystick.dx = 0
+  joystick.dy = 0
+
+  let ax = joystick.x - joystick.X
+  let ay = joystick.y - joystick.Y
+
+  let mag = Math.sqrt(ax**2 + ay**2)
+
+
+  joystick.dx = ax / mag
+  joystick.dy = ay / mag
+
+  if(mag > joystick.R){
+    joystick.x = joystick.X + (joystick.dx * joystick.R)
+    joystick.y = joystick.Y + (joystick.dy * joystick.R)
   }
+}
+
+let touchStarting = false
+
+canvas.addEventListener('touchstart', (e) => {
+
+
+  touchStarting = true
+
+  joystick.x = e.touches[0].clientX
+  joystick.y = e.touches[0].clientY
+
+  boundingCircle()
+
+ })
+
+
+canvas.addEventListener('touchmove', (e) => {
+
+  joystick.x = e.changedTouches[0].clientX
+  joystick.y = e.changedTouches[0].clientY
+
+  boundingCircle()
+
 })
 
-canvas.addEventListener('mouseup', function(e) {
+canvas.addEventListener('touchend', (e) => {
 
-  if(e.button === 1 ) {
-    leftClick = false
-    Ikon1.shooting = false
-  }
+  touchStarting = false
 
-  if(e.button === 2 ) {
-    rightClick = false
-    Ikon1.toggled = false
-  }
-
-  dragItems()
-  dragSkills()
+  joystick.x = joystick.X
+  joystick.y = joystick.Y
+  joystick.dx = 0
+  joystick.dy = 0
 
 })
-
 
 canvas.oncontextmenu = function(e) {
-   e.preventDefault(); e.stopPropagation();
+   //e.preventDefault(); e.stopPropagation();
  }
-
